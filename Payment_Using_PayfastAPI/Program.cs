@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Payment_Using_PayfastAPI.Data;
+using Payment_Using_PayfastAPI.Services;
 
 namespace Payment_Using_PayfastAPI
 {
@@ -19,6 +20,10 @@ namespace Payment_Using_PayfastAPI
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
+
+            // Register PayFastService as a singleton service
+            builder.Services.AddSingleton<PayFastService>();
+
 
             var app = builder.Build();
 
@@ -39,6 +44,7 @@ namespace Payment_Using_PayfastAPI
 
             app.UseRouting();
 
+            app.UseAuthentication(); // Ensure this is included for authentication
             app.UseAuthorization();
 
             app.MapControllerRoute(

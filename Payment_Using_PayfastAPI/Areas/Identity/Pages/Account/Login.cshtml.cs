@@ -103,7 +103,7 @@ namespace Payment_Using_PayfastAPI.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl ??= Url.Content("~/");
+            returnUrl ??= Url.Content("~/Payment/Index");  // Redirect to the payment page
 
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
@@ -115,7 +115,7 @@ namespace Payment_Using_PayfastAPI.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
+                    return LocalRedirect(returnUrl);  // Redirect to the payment page after login
                 }
                 if (result.RequiresTwoFactor)
                 {
@@ -136,5 +136,6 @@ namespace Payment_Using_PayfastAPI.Areas.Identity.Pages.Account
             // If we got this far, something failed, redisplay form
             return Page();
         }
+
     }
 }

@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "Payment";
+}
+
+<h2>Make Payment</h2>
+
+<form method="post" action="@ViewBag.PaymentUrl">
+    <!-- Depending on PayFast's requirements, you can add additional form fields here -->
+    <button type="submit" class="btn btn-primary">Pay Now</button>
+</form>
