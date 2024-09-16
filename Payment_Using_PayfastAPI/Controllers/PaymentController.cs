@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Payment_Using_PayfastAPI.Services;  // Add this using statement
+using Payment_Using_PayfastAPI.Services;
 
 namespace Payment_Using_PayfastAPI.Controllers
 {
@@ -18,7 +18,7 @@ namespace Payment_Using_PayfastAPI.Controllers
             string itemName = "Test Item";
             string itemDescription = "Payment for Test Item";
 
-            // Generate the PayFast payment URL
+            // Generating the PayFast payment URL
             string paymentUrl = _payFastService.CreatePaymentUrl(amount, itemName, itemDescription);
             ViewBag.PaymentUrl = paymentUrl;
 
